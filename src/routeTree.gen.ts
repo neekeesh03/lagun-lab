@@ -10,33 +10,191 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as JoinRouteImport } from './routes/join'
+import { Route as OpenScienceRouteImport } from './routes/open-science'
+import { Route as PeopleRouteImport } from './routes/people'
+import { Route as PoliciesRouteImport } from './routes/policies'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as PublicationsRouteImport } from './routes/publications'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as PeopleSlugRouteImport } from './routes/people.$slug'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as ResearchCognitiveDriveArchitectureRouteImport } from './routes/research/cognitive-drive-architecture'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpenScienceRoute = OpenScienceRouteImport.update({
+  id: '/open-science',
+  path: '/open-science',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicationsRoute = PublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleSlugRoute = PeopleSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PeopleRoute,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ResearchCognitiveDriveArchitectureRoute =
+  ResearchCognitiveDriveArchitectureRouteImport.update({
+    id: '/cognitive-drive-architecture',
+    path: '/cognitive-drive-architecture',
+    getParentRoute: () => ResearchRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/join': typeof JoinRoute
+  '/open-science': typeof OpenScienceRoute
+  '/people': typeof PeopleRouteWithChildren
+  '/policies': typeof PoliciesRoute
+  '/projects': typeof ProjectsRouteWithChildren
+  '/publications': typeof PublicationsRoute
+  '/research': typeof ResearchRouteWithChildren
+  '/people/$slug': typeof PeopleSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/join': typeof JoinRoute
+  '/open-science': typeof OpenScienceRoute
+  '/people': typeof PeopleRouteWithChildren
+  '/policies': typeof PoliciesRoute
+  '/projects': typeof ProjectsRouteWithChildren
+  '/publications': typeof PublicationsRoute
+  '/research': typeof ResearchRouteWithChildren
+  '/people/$slug': typeof PeopleSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/join': typeof JoinRoute
+  '/open-science': typeof OpenScienceRoute
+  '/people': typeof PeopleRouteWithChildren
+  '/policies': typeof PoliciesRoute
+  '/projects': typeof ProjectsRouteWithChildren
+  '/publications': typeof PublicationsRoute
+  '/research': typeof ResearchRouteWithChildren
+  '/people/$slug': typeof PeopleSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/join'
+    | '/open-science'
+    | '/people'
+    | '/policies'
+    | '/projects'
+    | '/publications'
+    | '/research'
+    | '/people/$slug'
+    | '/projects/$slug'
+    | '/research/cognitive-drive-architecture'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/join'
+    | '/open-science'
+    | '/people'
+    | '/policies'
+    | '/projects'
+    | '/publications'
+    | '/research'
+    | '/people/$slug'
+    | '/projects/$slug'
+    | '/research/cognitive-drive-architecture'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/join'
+    | '/open-science'
+    | '/people'
+    | '/policies'
+    | '/projects'
+    | '/publications'
+    | '/research'
+    | '/people/$slug'
+    | '/projects/$slug'
+    | '/research/cognitive-drive-architecture'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  JoinRoute: typeof JoinRoute
+  OpenScienceRoute: typeof OpenScienceRoute
+  PeopleRoute: typeof PeopleRouteWithChildren
+  PoliciesRoute: typeof PoliciesRoute
+  ProjectsRoute: typeof ProjectsRouteWithChildren
+  PublicationsRoute: typeof PublicationsRoute
+  ResearchRoute: typeof ResearchRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +206,140 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/open-science': {
+      id: '/open-science'
+      path: '/open-science'
+      fullPath: '/open-science'
+      preLoaderRoute: typeof OpenScienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publications': {
+      id: '/publications'
+      path: '/publications'
+      fullPath: '/publications'
+      preLoaderRoute: typeof PublicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people/$slug': {
+      id: '/people/$slug'
+      path: '/$slug'
+      fullPath: '/people/$slug'
+      preLoaderRoute: typeof PeopleSlugRouteImport
+      parentRoute: typeof PeopleRoute
+    }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/research/cognitive-drive-architecture': {
+      id: '/research/cognitive-drive-architecture'
+      path: '/cognitive-drive-architecture'
+      fullPath: '/research/cognitive-drive-architecture'
+      preLoaderRoute: typeof ResearchCognitiveDriveArchitectureRouteImport
+      parentRoute: typeof ResearchRoute
+    }
   }
 }
 
+interface PeopleRouteChildren {
+  PeopleSlugRoute: typeof PeopleSlugRoute
+}
+
+const PeopleRouteChildren: PeopleRouteChildren = {
+  PeopleSlugRoute: PeopleSlugRoute,
+}
+
+const PeopleRouteWithChildren =
+  PeopleRoute._addFileChildren(PeopleRouteChildren)
+
+interface ProjectsRouteChildren {
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+}
+
+const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsSlugRoute: ProjectsSlugRoute,
+}
+
+const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
+  ProjectsRouteChildren,
+)
+
+interface ResearchRouteChildren {
+  ResearchCognitiveDriveArchitectureRoute: typeof ResearchCognitiveDriveArchitectureRoute
+}
+
+const ResearchRouteChildren: ResearchRouteChildren = {
+  ResearchCognitiveDriveArchitectureRoute:
+    ResearchCognitiveDriveArchitectureRoute,
+}
+
+const ResearchRouteWithChildren = ResearchRoute._addFileChildren(
+  ResearchRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  JoinRoute: JoinRoute,
+  OpenScienceRoute: OpenScienceRoute,
+  PeopleRoute: PeopleRouteWithChildren,
+  PoliciesRoute: PoliciesRoute,
+  ProjectsRoute: ProjectsRouteWithChildren,
+  PublicationsRoute: PublicationsRoute,
+  ResearchRoute: ResearchRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
