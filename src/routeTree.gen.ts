@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PeopleRouteImport } from './routes/people'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as PeopleSlugRouteImport } from './routes/people.$slug'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as ResearchCognitiveDriveArchitectureRouteImport } from './routes/research/cognitive-drive-architecture'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,10 +22,30 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleSlugRoute = PeopleSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PeopleRoute,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjectsRoute,
 } as any)
 const ResearchCognitiveDriveArchitectureRoute =
   ResearchCognitiveDriveArchitectureRouteImport.update({
@@ -32,30 +56,66 @@ const ResearchCognitiveDriveArchitectureRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/people': typeof PeopleRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRouteWithChildren
+  '/people/$slug': typeof PeopleSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/people': typeof PeopleRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRouteWithChildren
+  '/people/$slug': typeof PeopleSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/people': typeof PeopleRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRouteWithChildren
+  '/people/$slug': typeof PeopleSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/research' | '/research/cognitive-drive-architecture'
+  fullPaths:
+    | '/'
+    | '/people'
+    | '/projects'
+    | '/research'
+    | '/people/$slug'
+    | '/projects/$slug'
+    | '/research/cognitive-drive-architecture'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/research' | '/research/cognitive-drive-architecture'
-  id: '__root__' | '/' | '/research' | '/research/cognitive-drive-architecture'
+  to:
+    | '/'
+    | '/people'
+    | '/projects'
+    | '/research'
+    | '/people/$slug'
+    | '/projects/$slug'
+    | '/research/cognitive-drive-architecture'
+  id:
+    | '__root__'
+    | '/'
+    | '/people'
+    | '/projects'
+    | '/research'
+    | '/people/$slug'
+    | '/projects/$slug'
+    | '/research/cognitive-drive-architecture'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PeopleRoute: typeof PeopleRouteWithChildren
+  ProjectsRoute: typeof ProjectsRouteWithChildren
   ResearchRoute: typeof ResearchRouteWithChildren
 }
 
@@ -68,12 +128,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research': {
       id: '/research'
       path: '/research'
       fullPath: '/research'
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/people/$slug': {
+      id: '/people/$slug'
+      path: '/$slug'
+      fullPath: '/people/$slug'
+      preLoaderRoute: typeof PeopleSlugRouteImport
+      parentRoute: typeof PeopleRoute
+    }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof ProjectsRoute
     }
     '/research/cognitive-drive-architecture': {
       id: '/research/cognitive-drive-architecture'
@@ -84,6 +172,29 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface PeopleRouteChildren {
+  PeopleSlugRoute: typeof PeopleSlugRoute
+}
+
+const PeopleRouteChildren: PeopleRouteChildren = {
+  PeopleSlugRoute: PeopleSlugRoute,
+}
+
+const PeopleRouteWithChildren =
+  PeopleRoute._addFileChildren(PeopleRouteChildren)
+
+interface ProjectsRouteChildren {
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+}
+
+const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsSlugRoute: ProjectsSlugRoute,
+}
+
+const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
+  ProjectsRouteChildren,
+)
 
 interface ResearchRouteChildren {
   ResearchCognitiveDriveArchitectureRoute: typeof ResearchCognitiveDriveArchitectureRoute
@@ -100,6 +211,8 @@ const ResearchRouteWithChildren = ResearchRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PeopleRoute: PeopleRouteWithChildren,
+  ProjectsRoute: ProjectsRouteWithChildren,
   ResearchRoute: ResearchRouteWithChildren,
 }
 export const routeTree = rootRouteImport
