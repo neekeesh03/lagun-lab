@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as ResearchCognitiveDriveArchitectureRouteImport } from './routes/research/cognitive-drive-architecture'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchCognitiveDriveArchitectureRoute =
+  ResearchCognitiveDriveArchitectureRouteImport.update({
+    id: '/cognitive-drive-architecture',
+    path: '/cognitive-drive-architecture',
+    getParentRoute: () => ResearchRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/research': typeof ResearchRouteWithChildren
+  '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/research': typeof ResearchRouteWithChildren
+  '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/research': typeof ResearchRouteWithChildren
+  '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/research' | '/research/cognitive-drive-architecture'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/research' | '/research/cognitive-drive-architecture'
+  id: '__root__' | '/' | '/research' | '/research/cognitive-drive-architecture'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ResearchRoute: typeof ResearchRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research/cognitive-drive-architecture': {
+      id: '/research/cognitive-drive-architecture'
+      path: '/cognitive-drive-architecture'
+      fullPath: '/research/cognitive-drive-architecture'
+      preLoaderRoute: typeof ResearchCognitiveDriveArchitectureRouteImport
+      parentRoute: typeof ResearchRoute
+    }
   }
 }
 
+interface ResearchRouteChildren {
+  ResearchCognitiveDriveArchitectureRoute: typeof ResearchCognitiveDriveArchitectureRoute
+}
+
+const ResearchRouteChildren: ResearchRouteChildren = {
+  ResearchCognitiveDriveArchitectureRoute:
+    ResearchCognitiveDriveArchitectureRoute,
+}
+
+const ResearchRouteWithChildren = ResearchRoute._addFileChildren(
+  ResearchRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ResearchRoute: ResearchRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
