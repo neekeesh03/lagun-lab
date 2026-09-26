@@ -9,19 +9,51 @@ export type Project = {
 export type Person = {
   id: string; slug: string; name: string; role: string; category: string; photo?: string;
   bio: string; researchInterests: string[]; methods: string[]; externalAffiliation?: string;
-  orcid?: string; scholar?: string; github?: string; linkedin?: string; website?: string;
+  orcid?: string; scholar?: string; researchGate?: string; github?: string; linkedin?: string; website?: string;
   joinedYear?: number; projectIds: string[]; publicationIds: string[];
+  scholarlyMetrics?: { citations: number; hIndex: number; i10Index: number; worksListed: number; updatedAt: string };
 };
 export type Publication = {
   id: string; slug: string; title: string; authors: string[]; year: number; type: string;
   peerReviewed?: boolean; venue?: string; volume?: string; issue?: string; pages?: string;
   doi?: string; abstract?: string; paperUrl?: string; codeUrl?: string; dataUrl?: string;
   preregistrationUrl?: string; projectId?: string;
+  relationshipToLab: "lagun-lab" | "foundational-founder-work" | "external-collaboration";
+  citations?: number; citationsUpdatedAt?: string; tags: string[];
 };
 
 // Public arrays remain empty until records are verified by Lagun Lab.
 export const projects: Project[] = [];
-export const publications: Publication[] = [];
+export const publications: Publication[] = [
+  {
+    id: "foundational-2026-history-dependent-inactivity", slug: "history-dependent-transitions-to-sustained-inactivity",
+    title: "The Weight of the Past: History-Dependent Structure in Transitions to Sustained Inactivity",
+    authors: ["Nikesh Lagun"], year: 2026, type: "Peer-reviewed article", peerReviewed: true,
+    venue: "Chronobiology in Medicine", volume: "8", issue: "2", pages: "87–97",
+    relationshipToLab: "foundational-founder-work", tags: ["Behavioral dynamics", "History dependence"],
+  },
+  {
+    id: "foundational-2026-threshold-action-initiation", slug: "why-intentions-fail-to-become-action",
+    title: "Why Intentions Fail to Become Action: A Threshold Account of Action Initiation",
+    authors: ["Nikesh Lagun", "B. L. Tamang", "Kushal Budha", "S. Darji", "B. Ghimire", "S. Adhikari", "S. Rijal"],
+    year: 2026, type: "Preprint", venue: "OSF", relationshipToLab: "foundational-founder-work",
+    tags: ["Action initiation", "Threshold models"],
+  },
+  {
+    id: "foundational-2025-laguns-law", slug: "laguns-law-foundations-cognitive-drive-architecture",
+    title: "Lagun’s Law and the Foundations of Cognitive Drive Architecture: A First Principles Theory of Effort and Performance",
+    authors: ["Nikesh Lagun"], year: 2025, type: "Peer-reviewed article", peerReviewed: true,
+    venue: "International Journal of Science and Research Archive", relationshipToLab: "foundational-founder-work",
+    citations: 13, citationsUpdatedAt: "September 2026", tags: ["Cognitive Drive Architecture", "Theory"],
+  },
+  {
+    id: "foundational-2025-latent-task-architecture", slug: "latent-task-architecture",
+    title: "Latent Task Architecture: Modeling Cognitive Readiness Under Unresolved Intentions",
+    authors: ["Nikesh Lagun"], year: 2025, type: "Preprint", venue: "Research Square",
+    relationshipToLab: "foundational-founder-work", citations: 4, citationsUpdatedAt: "September 2026",
+    tags: ["Action initiation", "Cognitive readiness"],
+  },
+];
 export const people: Person[] = [
   {
     id: "person-nikesh-lagun",
@@ -29,11 +61,12 @@ export const people: Person[] = [
     name: "Nikesh Lagun",
     role: "Founder & Research Lead",
     category: "Research Leadership",
-    bio: "Nikesh Lagun leads the development of Lagun Lab's research direction and its project-based approach to cognitive and behavioral science.",
-    researchInterests: ["Action initiation", "Computational cognition", "Behavioral dynamics"],
-    methods: [],
+    bio: "Nikesh Lagun is a researcher working across cognitive and behavioral science, computational approaches to cognition, and quantitative research. His current work examines action initiation, effort regulation, behavioral transitions, and formal models of cognitive dynamics.",
+    researchInterests: ["Cognitive dynamics", "Action initiation", "Cognitive Drive Architecture", "Behavioral science", "Computational psychology", "Quantitative research"],
+    methods: ["Formal modeling", "Behavioral time-series analysis", "Statistical inference", "Secondary-data analysis"],
     projectIds: [],
-    publicationIds: [],
+    publicationIds: ["foundational-2026-history-dependent-inactivity", "foundational-2026-threshold-action-initiation", "foundational-2025-laguns-law", "foundational-2025-latent-task-architecture"],
+    scholarlyMetrics: { citations: 36, hIndex: 4, i10Index: 1, worksListed: 23, updatedAt: "September 2026" },
   },
 ];
 
