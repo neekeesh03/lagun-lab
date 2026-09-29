@@ -14,12 +14,12 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as OpenScienceRouteImport } from './routes/open-science'
-import { Route as PeopleRouteImport } from './routes/people'
 import { Route as PoliciesRouteImport } from './routes/policies'
-import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as PeopleIndexRouteImport } from './routes/people.index'
 import { Route as PeopleSlugRouteImport } from './routes/people.$slug'
+import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as ResearchCognitiveDriveArchitectureRouteImport } from './routes/research/cognitive-drive-architecture'
 
@@ -48,19 +48,9 @@ const OpenScienceRoute = OpenScienceRouteImport.update({
   path: '/open-science',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PeopleRoute = PeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PoliciesRoute = PoliciesRouteImport.update({
   id: '/policies',
   path: '/policies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicationsRoute = PublicationsRouteImport.update({
@@ -73,15 +63,25 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PeopleIndexRoute = PeopleIndexRouteImport.update({
+  id: '/people/',
+  path: '/people/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PeopleSlugRoute = PeopleSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => PeopleRoute,
+  id: '/people/$slug',
+  path: '/people/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProjectsRoute,
+  id: '/projects/$slug',
+  path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ResearchCognitiveDriveArchitectureRoute =
   ResearchCognitiveDriveArchitectureRouteImport.update({
@@ -96,14 +96,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/join': typeof JoinRoute
   '/open-science': typeof OpenScienceRoute
-  '/people': typeof PeopleRouteWithChildren
   '/policies': typeof PoliciesRoute
-  '/projects': typeof ProjectsRouteWithChildren
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRouteWithChildren
   '/people/$slug': typeof PeopleSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
+  '/people/': typeof PeopleIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -111,14 +111,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/join': typeof JoinRoute
   '/open-science': typeof OpenScienceRoute
-  '/people': typeof PeopleRouteWithChildren
   '/policies': typeof PoliciesRoute
-  '/projects': typeof ProjectsRouteWithChildren
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRouteWithChildren
   '/people/$slug': typeof PeopleSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
+  '/people': typeof PeopleIndexRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -127,14 +127,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/join': typeof JoinRoute
   '/open-science': typeof OpenScienceRoute
-  '/people': typeof PeopleRouteWithChildren
   '/policies': typeof PoliciesRoute
-  '/projects': typeof ProjectsRouteWithChildren
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRouteWithChildren
   '/people/$slug': typeof PeopleSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/research/cognitive-drive-architecture': typeof ResearchCognitiveDriveArchitectureRoute
+  '/people/': typeof PeopleIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -144,14 +144,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/join'
     | '/open-science'
-    | '/people'
     | '/policies'
-    | '/projects'
     | '/publications'
     | '/research'
     | '/people/$slug'
     | '/projects/$slug'
     | '/research/cognitive-drive-architecture'
+    | '/people/'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -159,14 +159,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/join'
     | '/open-science'
-    | '/people'
     | '/policies'
-    | '/projects'
     | '/publications'
     | '/research'
     | '/people/$slug'
     | '/projects/$slug'
     | '/research/cognitive-drive-architecture'
+    | '/people'
+    | '/projects'
   id:
     | '__root__'
     | '/'
@@ -174,14 +174,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/join'
     | '/open-science'
-    | '/people'
     | '/policies'
-    | '/projects'
     | '/publications'
     | '/research'
     | '/people/$slug'
     | '/projects/$slug'
     | '/research/cognitive-drive-architecture'
+    | '/people/'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -190,11 +190,13 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   JoinRoute: typeof JoinRoute
   OpenScienceRoute: typeof OpenScienceRoute
-  PeopleRoute: typeof PeopleRouteWithChildren
   PoliciesRoute: typeof PoliciesRoute
-  ProjectsRoute: typeof ProjectsRouteWithChildren
   PublicationsRoute: typeof PublicationsRoute
   ResearchRoute: typeof ResearchRouteWithChildren
+  PeopleSlugRoute: typeof PeopleSlugRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+  PeopleIndexRoute: typeof PeopleIndexRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -234,25 +236,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpenScienceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/people': {
-      id: '/people'
-      path: '/people'
-      fullPath: '/people'
-      preLoaderRoute: typeof PeopleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/policies': {
       id: '/policies'
       path: '/policies'
       fullPath: '/policies'
       preLoaderRoute: typeof PoliciesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/publications': {
@@ -269,19 +257,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/people/': {
+      id: '/people/'
+      path: '/people'
+      fullPath: '/people/'
+      preLoaderRoute: typeof PeopleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/people/$slug': {
       id: '/people/$slug'
-      path: '/$slug'
+      path: '/people/$slug'
       fullPath: '/people/$slug'
       preLoaderRoute: typeof PeopleSlugRouteImport
-      parentRoute: typeof PeopleRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/projects/$slug': {
       id: '/projects/$slug'
-      path: '/$slug'
+      path: '/projects/$slug'
       fullPath: '/projects/$slug'
       preLoaderRoute: typeof ProjectsSlugRouteImport
-      parentRoute: typeof ProjectsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/research/cognitive-drive-architecture': {
       id: '/research/cognitive-drive-architecture'
@@ -292,29 +294,6 @@ declare module '@tanstack/react-router' {
     }
   }
 }
-
-interface PeopleRouteChildren {
-  PeopleSlugRoute: typeof PeopleSlugRoute
-}
-
-const PeopleRouteChildren: PeopleRouteChildren = {
-  PeopleSlugRoute: PeopleSlugRoute,
-}
-
-const PeopleRouteWithChildren =
-  PeopleRoute._addFileChildren(PeopleRouteChildren)
-
-interface ProjectsRouteChildren {
-  ProjectsSlugRoute: typeof ProjectsSlugRoute
-}
-
-const ProjectsRouteChildren: ProjectsRouteChildren = {
-  ProjectsSlugRoute: ProjectsSlugRoute,
-}
-
-const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
-  ProjectsRouteChildren,
-)
 
 interface ResearchRouteChildren {
   ResearchCognitiveDriveArchitectureRoute: typeof ResearchCognitiveDriveArchitectureRoute
@@ -335,11 +314,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   JoinRoute: JoinRoute,
   OpenScienceRoute: OpenScienceRoute,
-  PeopleRoute: PeopleRouteWithChildren,
   PoliciesRoute: PoliciesRoute,
-  ProjectsRoute: ProjectsRouteWithChildren,
   PublicationsRoute: PublicationsRoute,
   ResearchRoute: ResearchRouteWithChildren,
+  PeopleSlugRoute: PeopleSlugRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
+  PeopleIndexRoute: PeopleIndexRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
