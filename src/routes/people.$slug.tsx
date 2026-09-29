@@ -75,7 +75,7 @@ function Person() {
               <Block title="Foundational research">
                 <p className="mb-3 text-sm text-muted-foreground">Completed before Lagun Lab became a formal research affiliation; not presented as Lagun Lab output.</p>
                 <PubList items={foundational} />
-                <Link to="/publications" search={{ filter: "foundational" } as never} className="mt-4 inline-block font-medium text-primary hover:underline">View all publications →</Link>
+                <Link to="/publications" search={{ type: "Foundational Work" }} className="mt-4 inline-block font-medium text-primary hover:underline">View all publications →</Link>
               </Block>
             )}
             {p.externalAffiliation && <Block title="External affiliation"><p>{p.externalAffiliation} (separate from Lagun Lab)</p></Block>}
