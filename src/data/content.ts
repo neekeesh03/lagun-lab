@@ -9,7 +9,7 @@ export type Project = {
 export type Person = {
   id: string; slug: string; name: string; role: string; category: string; photo?: string;
   bio: string; researchInterests: string[]; methods: string[]; externalAffiliation?: string;
-  orcid?: string; scholar?: string; researchGate?: string; github?: string; linkedin?: string; website?: string;
+  orcid?: string; scholar?: string; scopus?: string; researchGate?: string; github?: string; linkedin?: string; website?: string; email?: string;
   joinedYear?: number; projectIds: string[]; publicationIds: string[];
   scholarlyMetrics?: { citations: number; hIndex: number; i10Index: number; worksListed: number; updatedAt: string };
 };
@@ -54,6 +54,9 @@ export const publications: Publication[] = [
     tags: ["Action initiation", "Cognitive readiness"],
   },
 ];
+export const foundingYear = 2026;
+export const contactEmail = "lagunnikesh2064@gmail.com";
+
 export const people: Person[] = [
   {
     id: "person-nikesh-lagun",
@@ -61,9 +64,14 @@ export const people: Person[] = [
     name: "Nikesh Lagun",
     role: "Founder & Research Lead",
     category: "Research Leadership",
+    photo: "/__l5e/assets-v1/630027cb-7bff-4ab7-9de4-8fe811e0043b/nikesh-lagun.png",
     bio: "Nikesh Lagun is a researcher working across cognitive and behavioral science, computational approaches to cognition, and quantitative research. His current work examines action initiation, effort regulation, behavioral transitions, and formal models of cognitive dynamics.",
     researchInterests: ["Cognitive dynamics", "Action initiation", "Cognitive Drive Architecture", "Behavioral science", "Computational psychology", "Quantitative research"],
     methods: ["Formal modeling", "Behavioral time-series analysis", "Statistical inference", "Secondary-data analysis"],
+    orcid: "https://orcid.org/0009-0005-6372-4852",
+    scholar: "https://scholar.google.com/citations?user=nGsGSgIAAAAJ&hl=en",
+    scopus: "60009209500",
+    email: "lagunnikesh2064@gmail.com",
     projectIds: [],
     publicationIds: ["foundational-2026-history-dependent-inactivity", "foundational-2026-threshold-action-initiation", "foundational-2025-laguns-law", "foundational-2025-latent-task-architecture"],
     scholarlyMetrics: { citations: 36, hIndex: 4, i10Index: 1, worksListed: 23, updatedAt: "September 2026" },
