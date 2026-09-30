@@ -37,6 +37,8 @@ function Person() {
   const lab = pubs.filter((x) => x.relationshipToLab === "lagun-lab");
   const foundational = pubs.filter((x) => x.relationshipToLab === "foundational-founder-work");
   const links = [["Google Scholar", p.scholar], ["ORCID", p.orcid], ["ResearchGate", p.researchGate], ["Homepage", p.website], ["LinkedIn", p.linkedin], ["GitHub", p.github]].filter((l): l is [string, string] => !!l[1]);
+  const scopusUrl = p.scopus ? `https://www.scopus.com/authid/detail.uri?authorId=${p.scopus}` : undefined;
+  if (scopusUrl) links.splice(2, 0, ["Scopus", scopusUrl]);
   const m = p.scholarlyMetrics;
   return (
     <main>
@@ -44,9 +46,13 @@ function Person() {
       <section className="page-section">
         <div className="grid-12">
           <aside className="col-span-12 space-y-8 md:col-span-4">
-            <div className="flex aspect-square max-w-64 items-center justify-center bg-secondary text-5xl font-medium text-primary" aria-hidden="true">
-              {p.name.split(" ").map((n) => n[0]).join("")}
-            </div>
+            {p.photo ? (
+              <img src={p.photo} alt={`Portrait of ${p.name}`} className="aspect-square w-full max-w-64 object-cover" />
+            ) : (
+              <div className="flex aspect-square max-w-64 items-center justify-center bg-secondary text-5xl font-medium text-primary" aria-hidden="true">
+                {p.name.split(" ").map((n) => n[0]).join("")}
+              </div>
+            )}
             {m && (
               <section className="border-t border-border pt-5" aria-labelledby="metrics">
                 <h2 id="metrics" className="eyebrow">Scholarly profile</h2>
@@ -62,6 +68,9 @@ function Person() {
             {links.length > 0 && (
               <section className="border-t border-border pt-5"><h2 className="eyebrow">Links</h2>
                 <ul className="mt-3 space-y-1">{links.map(([k, v]) => <li key={k}><a href={v} className="text-primary hover:underline">{k} →</a></li>)}</ul>
+                {p.orcid && <p className="mt-3 text-xs text-muted-foreground">ORCID iD: {p.orcid.replace("https://orcid.org/", "")}</p>}
+                {p.scopus && <p className="mt-1 text-xs text-muted-foreground">Scopus Author ID: {p.scopus}</p>}
+                {p.email && <p className="mt-3 text-sm"><a href={`mailto:${p.email}`} className="text-primary hover:underline">{p.email}</a></p>}
               </section>
             )}
           </aside>

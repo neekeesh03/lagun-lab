@@ -52,6 +52,10 @@ function About() {
                 <div className="mt-2"><ArrowLink to="/people/$slug" params={{ slug: "nikesh-lagun" }}>View profile</ArrowLink></div>
               </div>
             </section>
+            <section className="grid gap-3 border-t border-border py-6 md:grid-cols-[14rem_1fr]">
+              <h2 className="font-medium">Founded</h2>
+              <p className="max-w-2xl leading-7 text-muted-foreground">2026</p>
+            </section>
             <section className="grid gap-3 border-y border-border py-6 md:grid-cols-[14rem_1fr]">
               <h2 className="font-medium">Contact</h2>
               <div><ArrowLink to="/contact">Contact the Lab</ArrowLink></div>

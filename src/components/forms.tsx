@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-const email = "research@[domain]";
+const email = "lagunnikesh2064@gmail.com";
 const baseSchema=z.object({name:z.string().trim().min(2).max(100),email:z.string().trim().email().max(255),message:z.string().trim().min(20).max(4000)});
 function Field({label,name,type="text",required=true}:{label:string;name:string;type?:string;required?:boolean}) { return <label className="form-field"><span>{label}{required && " *"}</span><Input name={name} type={type} required={required} maxLength={255}/></label> }
 function Area({label,name,required=true}:{label:string;name:string;required?:boolean}) { return <label className="form-field"><span>{label}{required && " *"}</span><Textarea name={name} required={required} maxLength={4000} rows={5}/></label> }
