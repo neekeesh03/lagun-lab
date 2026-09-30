@@ -31,7 +31,7 @@ export function SiteFooter() {
       <div className="lg:col-span-5"><p className="text-xl font-semibold">LAGUN LAB</p><p className="mt-5 max-w-md text-[15px] leading-6 text-background/70">Independent, distributed research organization studying cognitive and behavioral dynamics.</p><p className="mt-4 text-[13px] leading-5 text-background/55">Kathmandu, Nepal · The Lab operates remotely and is not a constituent unit of a university.</p></div>
       <FooterGroup title="Explore" links={nav}/>
       <FooterGroup title="Standards" links={[["Research Integrity","/policies"],["Authorship & Contribution","/policies"],["Affiliation Policy","/policies"],["Open Science","/open-science"],["Research Ethics","/policies"],["Code of Conduct","/policies"]]}/>
-      <div className="lg:col-span-2"><p className="footer-title">Contact</p><p className="text-sm text-background/70">research@[domain]</p><p className="mt-5 text-xs text-background/50">GitHub · Zenodo · LinkedIn links will be added once verified.</p></div>
+      <div className="lg:col-span-2"><p className="footer-title">Contact</p><p className="text-sm text-background/70"><a href="mailto:lagunnikesh2064@gmail.com" className="hover:text-background">lagunnikesh2064@gmail.com</a></p><p className="mt-5 text-xs text-background/50">GitHub · Zenodo · LinkedIn links will be added once verified.</p></div>
     </div>
     <div className="site-width mt-14 border-t border-background/15 pt-6 text-xs text-background/45">© 2026 Lagun Lab · Lagun Lab is independently organized and is not a constituent unit of a university.</div>
   </footer>
