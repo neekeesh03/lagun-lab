@@ -9,7 +9,7 @@ export type Project = {
 export type Person = {
   id: string; slug: string; name: string; role: string; category: string; photo?: string;
   bio: string; researchInterests: string[]; methods: string[]; externalAffiliation?: string;
-  orcid?: string; scholar?: string; scopus?: string; researchGate?: string; github?: string; linkedin?: string; website?: string; email?: string;
+  orcid?: string; scholar?: string; scopus?: string; researchGate?: string; github?: string; linkedin?: string; website?: string; email?: string; knowledgePanel?: string;
   joinedYear?: number; projectIds: string[]; publicationIds: string[];
   scholarlyMetrics?: { citations: number; hIndex: number; i10Index: number; worksListed: number; updatedAt: string };
 };
@@ -72,6 +72,7 @@ export const people: Person[] = [
     scholar: "https://scholar.google.com/citations?user=nGsGSgIAAAAJ&hl=en",
     scopus: "60009209500",
     email: "lagunnikesh2064@gmail.com",
+    knowledgePanel: "https://share.google/nB3viIOxt9ZfzScDr",
     projectIds: [],
     publicationIds: ["foundational-2026-history-dependent-inactivity", "foundational-2026-threshold-action-initiation", "foundational-2025-laguns-law", "foundational-2025-latent-task-architecture"],
     scholarlyMetrics: { citations: 36, hIndex: 4, i10Index: 1, worksListed: 23, updatedAt: "September 2026" },
