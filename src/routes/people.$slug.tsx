@@ -36,7 +36,7 @@ function Person() {
   const pubs = publications.filter((x) => p.publicationIds.includes(x.id));
   const lab = pubs.filter((x) => x.relationshipToLab === "lagun-lab");
   const foundational = pubs.filter((x) => x.relationshipToLab === "foundational-founder-work");
-  const links = [["Google Scholar", p.scholar], ["ORCID", p.orcid], ["ResearchGate", p.researchGate], ["Homepage", p.website], ["LinkedIn", p.linkedin], ["GitHub", p.github]].filter((l): l is [string, string] => !!l[1]);
+  const links = [["Google Scholar", p.scholar], ["ORCID", p.orcid], ["ResearchGate", p.researchGate], ["Google Knowledge Panel", p.knowledgePanel], ["Homepage", p.website], ["LinkedIn", p.linkedin], ["GitHub", p.github]].filter((l): l is [string, string] => !!l[1]);
   const scopusUrl = p.scopus ? `https://www.scopus.com/authid/detail.uri?authorId=${p.scopus}` : undefined;
   if (scopusUrl) links.splice(2, 0, ["Scopus", scopusUrl]);
   const m = p.scholarlyMetrics;
