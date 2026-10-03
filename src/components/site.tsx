@@ -1,7 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Menu, Network, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import logoAsset from "@/assets/lagun-lab-logo.png.asset.json";
+
+const logo = logoAsset.url;
 
 const nav = [
   ["Research", "/research"], ["Projects", "/projects"], ["People", "/people"],
