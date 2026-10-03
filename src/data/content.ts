@@ -65,7 +65,7 @@ export const people: Person[] = [
     role: "Founder & Research Lead",
     category: "Research Leadership",
     photo: "/__l5e/assets-v1/630027cb-7bff-4ab7-9de4-8fe811e0043b/nikesh-lagun.png",
-    bio: "Nikesh Lagun is a researcher working across cognitive and behavioral science, computational approaches to cognition, and quantitative research. His current work examines action initiation, effort regulation, behavioral transitions, and formal models of cognitive dynamics.",
+    bio: "Nikesh Lagun is a researcher and the founder of Lagun Lab. His work spans cognitive and behavioral research, quantitative analysis, and computational approaches to studying human behavior. He has published work proposing Cognitive Drive Architecture (CDA) as a field of research concerned with the processes involved in initiating, regulating, and sustaining cognitive effort. His publications have introduced and examined concepts including Lagun’s Law, Cognitive Thermostat Theory, and related models of action initiation and behavioral dynamics. His research has also included studies involving chronobiology, education, psychological and behavioral datasets, and statistical modeling. He is currently studying at Beihang University and continues to develop and test research questions related to cognition, behavior, and computational modeling through Lagun Lab.",
     researchInterests: ["Cognitive dynamics", "Action initiation", "Cognitive Drive Architecture", "Behavioral science", "Computational psychology", "Quantitative research"],
     methods: ["Formal modeling", "Behavioral time-series analysis", "Statistical inference", "Secondary-data analysis"],
     orcid: "https://orcid.org/0009-0005-6372-4852",
