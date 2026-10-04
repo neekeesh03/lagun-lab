@@ -28,7 +28,7 @@ export const publications: Publication[] = [
   {
     id: "lab-2025-llm-organic-synthesis", slug: "large-language-models-transform-organic-synthesis",
     title: "Large Language Models Transform Organic Synthesis: From Reaction Prediction to Automation",
-    authors: ["Kartar Kumar Lohana Tharwani", "Rajesh Kumar", "Sumita", "Numan Ahmed", "Yong Tang"],
+    authors: ["Kartar Kumar", "Rajesh Kumar", "Nikesh Lagun"],
     year: 2025, type: "Preprint", venue: "arXiv", paperUrl: "https://arxiv.org/abs/2508.05427",
     relationshipToLab: "lagun-lab", tags: ["Large language models", "Organic synthesis", "Laboratory automation"],
   },
@@ -82,7 +82,7 @@ export const people: Person[] = [
     email: "lagunnikesh2064@gmail.com",
     knowledgePanel: "https://share.google/nB3viIOxt9ZfzScDr",
     projectIds: [],
-    publicationIds: ["foundational-2026-history-dependent-inactivity", "foundational-2026-threshold-action-initiation", "foundational-2025-laguns-law", "foundational-2025-latent-task-architecture"],
+    publicationIds: ["lab-2025-llm-organic-synthesis", "foundational-2026-history-dependent-inactivity", "foundational-2026-threshold-action-initiation", "foundational-2025-laguns-law", "foundational-2025-latent-task-architecture"],
     scholarlyMetrics: { citations: 36, hIndex: 4, i10Index: 1, worksListed: 23, updatedAt: "September 2026" },
   },
   {
