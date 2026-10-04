@@ -57,7 +57,7 @@ function Person() {
               <section className="border-t border-border pt-5" aria-labelledby="metrics">
                 <h2 id="metrics" className="eyebrow">Scholarly profile</h2>
                 <dl className="mt-4 grid grid-cols-2 gap-px border border-border bg-border">
-                  {[["Citations", m.citations], ["h-index", m.hIndex], ["i10-index", m.i10Index], ["Works listed", m.worksListed]].map(([k, v]) => (
+                  {([["Citations", m.citations], ["h-index", m.hIndex], ["i10-index", m.i10Index], ...(m.worksListed != null ? [["Works listed", m.worksListed] as [string, number]] : [])] as [string, number][]).map(([k, v]) => (
                     <div key={k} className="bg-background p-4"><dt className="text-xs text-muted-foreground">{k}</dt><dd className="mt-1 text-2xl font-medium">{v}</dd></div>
                   ))}
                 </dl>
