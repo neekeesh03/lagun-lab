@@ -102,7 +102,7 @@ export const people: Person[] = [
     email: "rajakumarlohano@gmail.com",
     projectIds: [],
     publicationIds: ["lab-2025-llm-organic-synthesis"],
-    scholarlyMetrics: { citations: 3976, hIndex: 31, i10Index: 53, updatedAt: "October 2026" },
+    scholarlyMetrics: { citations: 3976, hIndex: 31, i10Index: 53, worksListed: 84, updatedAt: "October 2026" },
   },
 ];
 
