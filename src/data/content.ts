@@ -26,6 +26,13 @@ export type Publication = {
 export const projects: Project[] = [];
 export const publications: Publication[] = [
   {
+    id: "lab-2025-llm-organic-synthesis", slug: "large-language-models-transform-organic-synthesis",
+    title: "Large Language Models Transform Organic Synthesis: From Reaction Prediction to Automation",
+    authors: ["Kartar Kumar Lohana Tharwani", "Rajesh Kumar", "Sumita", "Numan Ahmed", "Yong Tang"],
+    year: 2025, type: "Preprint", venue: "arXiv", paperUrl: "https://arxiv.org/abs/2508.05427",
+    relationshipToLab: "lagun-lab", tags: ["Large language models", "Organic synthesis", "Laboratory automation"],
+  },
+  {
     id: "foundational-2026-history-dependent-inactivity", slug: "history-dependent-transitions-to-sustained-inactivity",
     title: "The Weight of the Past: History-Dependent Structure in Transitions to Sustained Inactivity",
     authors: ["Nikesh Lagun"], year: 2026, type: "Peer-reviewed article", peerReviewed: true,
@@ -89,9 +96,12 @@ export const people: Person[] = [
     researchInterests: ["Privacy-preserving AI", "Federated learning", "Blockchain-enabled healthcare", "AI for cybersecurity", "Secure data sharing", "Medical imaging AI"],
     methods: ["Machine learning", "Deep learning", "Federated learning", "Blockchain systems", "Malware detection"],
     externalAffiliation: "International Research Center for Complexity Sciences, International Innovation Institute, Beihang University, Hangzhou 311115, China",
+    orcid: "https://orcid.org/0000-0003-0813-7485",
     scholar: "https://scholar.google.com/citations?user=2_F5e_YAAAAJ&hl=en",
+    scopus: "58488212700",
+    email: "rajakumarlohano@gmail.com",
     projectIds: [],
-    publicationIds: [],
+    publicationIds: ["lab-2025-llm-organic-synthesis"],
   },
 ];
 
