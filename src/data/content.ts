@@ -11,7 +11,7 @@ export type Person = {
   bio: string; researchInterests: string[]; methods: string[]; externalAffiliation?: string;
   orcid?: string; scholar?: string; scopus?: string; researchGate?: string; github?: string; linkedin?: string; website?: string; email?: string; knowledgePanel?: string;
   joinedYear?: number; projectIds: string[]; publicationIds: string[];
-  scholarlyMetrics?: { citations: number; hIndex: number; i10Index: number; worksListed: number; updatedAt: string };
+  scholarlyMetrics?: { citations: number; hIndex: number; i10Index: number; worksListed?: number; updatedAt: string };
 };
 export type Publication = {
   id: string; slug: string; title: string; authors: string[]; year: number; type: string;
@@ -102,6 +102,7 @@ export const people: Person[] = [
     email: "rajakumarlohano@gmail.com",
     projectIds: [],
     publicationIds: ["lab-2025-llm-organic-synthesis"],
+    scholarlyMetrics: { citations: 3976, hIndex: 31, i10Index: 53, updatedAt: "October 2026" },
   },
 ];
 
