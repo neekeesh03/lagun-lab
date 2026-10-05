@@ -14,7 +14,7 @@ const nav = [
 export function SiteHeader() {
   return <header className="border-b border-foreground bg-background/95 sticky top-0 z-50 backdrop-blur-sm">
     <div className="site-width flex min-h-18 items-center justify-between gap-6">
-      <Link to="/" className="flex items-center gap-3"><img src={logo} alt="Lagun Lab logo" className="size-9"/><span className="text-lg font-semibold text-primary">LAGUN LAB</span><span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground xl:inline">Kathmandu · Est. 2026</span></Link>
+      <Link to="/" className="flex items-center gap-3"><img src={logo} alt="Lagun Lab logo" className="size-9"/><span className="text-lg font-semibold text-primary">LAGUN LAB</span></Link>
       <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
         {nav.map(([label,to]) => <Link key={to} to={to} activeProps={{className:"text-primary"}} className="text-[15px] font-medium hover:text-primary">{label}</Link>)}
       </nav>
