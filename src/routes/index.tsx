@@ -7,17 +7,19 @@ const questions=[["Action initiation","What determines when intention becomes be
 function Home(){return <main>
 <section className="home-hero">
   <div className="home-hero-grid" aria-hidden="true"/>
+  <div className="home-hero-rail home-hero-rail-left" aria-hidden="true"><span>LL / 2026</span><span>35.6762° N</span></div>
+  <div className="home-hero-rail home-hero-rail-right" aria-hidden="true"><span>COGNITION</span><span>BEHAVIOR</span></div>
   <div className="home-hero-content">
-    <p className="home-hero-kicker"><span className="home-hero-mark"/>Cognitive &amp; behavioral science</p>
+    <p className="home-hero-kicker"><span className="home-hero-mark"/>Research premise / 01</p>
     <h1>Understanding how cognition becomes action.</h1>
     <p className="home-hero-copy">Lagun Lab is an independent, distributed research organization studying cognitive and behavioral dynamics through theoretical, computational, and quantitative methods.</p>
-    <Button asChild size="lg" className="home-hero-cta"><Link to="/research">Explore our research <ArrowRight/></Link></Button>
+    <div className="home-hero-actions"><Button asChild size="lg" className="home-hero-cta"><Link to="/research">Explore our research <ArrowRight/></Link></Button><Link to="/about" className="home-hero-text-link">About the lab</Link></div>
   </div>
   <div className="home-hero-preview">
     <div className="home-hero-preview-visual" aria-hidden="true">
       <span className="trace-node trace-node-one">S₀</span><span className="trace-line"/><span className="trace-node trace-node-two">S₁</span><span className="trace-line"/><span className="trace-node trace-node-three">S₂</span>
     </div>
-    <div className="home-hero-preview-copy"><p className="mono-tag text-highlight">Research focus / 01</p><h2>From intention to sustained action</h2><p>Examining initiation, regulation, persistence, and the behavioral states between them.</p><ArrowLink to="/research">View research areas</ArrowLink></div>
+    <div className="home-hero-preview-copy"><p className="mono-tag text-highlight">Open research question</p><h2>From intention to sustained action</h2><p>Examining initiation, regulation, persistence, and the behavioral states between them.</p><ArrowLink to="/research">View research areas</ArrowLink></div>
   </div>
 </section>
 <section className="page-section border-b border-border"><div className="mb-10 grid-12"><p className="eyebrow col-span-12 md:col-span-3"><span className="font-mono font-medium text-primary">00</span> / CORE QUESTION</p><h2 className="col-span-12 text-3xl font-light italic md:col-span-9 lg:text-4xl">How does thought become <span className="border-b border-highlight/50">behavior</span>?</h2></div><div className="grid-12"><p className="col-span-12 text-lg leading-8 lg:col-span-5">People can understand what they need to do, intend to act, and possess the ability to act, yet still fail to begin, persist, or adapt effectively. We study the cognitive and behavioral processes underlying these transitions.</p><div className="col-span-12 lg:col-span-7">{questions.map(([t,d],i)=><div key={t} className="grid grid-cols-[2.5rem_1fr] gap-5 border-t border-border py-5"><span className="font-mono text-xs text-primary">0{i+1}</span><div><h3 className="font-medium">{t}</h3><p className="mt-1 text-sm text-muted-foreground">{d}</p></div></div>)}</div></div></section>
