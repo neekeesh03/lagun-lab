@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep research content in typed data records with an explicit relationship-to-Lab field, because pre-Lab founder work must never be presented as official Lagun Lab output.
+- Keep the homepage opening as a dark technical research field with a centered statement and a light research preview at the fold, because this is the selected visual structure.

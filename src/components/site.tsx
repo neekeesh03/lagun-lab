@@ -12,16 +12,16 @@ const nav = [
 ] as const;
 
 export function SiteHeader() {
-  return <header className="border-b border-foreground bg-background/95 sticky top-0 z-50 backdrop-blur-sm">
+  return <header className="sticky top-0 z-50 border-b border-hero-line bg-hero text-hero-foreground">
     <div className="site-width flex min-h-18 items-center justify-between gap-6">
-      <Link to="/" className="flex items-center gap-3"><img src={logo} alt="Lagun Lab logo" className="size-9"/><span className="text-lg font-semibold text-primary">LAGUN LAB</span></Link>
+      <Link to="/" className="flex items-center gap-3"><img src={logo} alt="Lagun Lab logo" className="size-9"/><span className="text-lg font-semibold">LAGUN LAB</span></Link>
       <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
-        {nav.map(([label,to]) => <Link key={to} to={to} activeProps={{className:"text-primary"}} className="text-[15px] font-medium hover:text-primary">{label}</Link>)}
+        {nav.map(([label,to]) => <Link key={to} to={to} activeProps={{className:"text-hero-accent"}} className="text-[14px] font-medium text-hero-muted hover:text-hero-foreground">{label}</Link>)}
       </nav>
       <details className="group relative lg:hidden">
-        <summary className="flex size-10 cursor-pointer list-none items-center justify-center border border-border" aria-label="Open navigation"><Menu className="size-5 group-open:hidden"/><X className="hidden size-5 group-open:block"/></summary>
-        <nav className="absolute right-0 top-12 w-64 border border-border bg-background p-3 shadow-sm" aria-label="Mobile navigation">
-          {nav.map(([label,to]) => <Link key={to} to={to} className="block border-b border-border px-3 py-3 text-sm font-medium last:border-0">{label}</Link>)}
+        <summary className="flex size-10 cursor-pointer list-none items-center justify-center border border-hero-line" aria-label="Open navigation"><Menu className="size-5 group-open:hidden"/><X className="hidden size-5 group-open:block"/></summary>
+        <nav className="absolute right-0 top-12 w-64 border border-hero-line bg-hero p-3" aria-label="Mobile navigation">
+          {nav.map(([label,to]) => <Link key={to} to={to} className="block border-b border-hero-line px-3 py-3 text-sm font-medium last:border-0">{label}</Link>)}
         </nav>
       </details>
     </div>
